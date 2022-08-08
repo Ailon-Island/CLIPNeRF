@@ -2,3 +2,4 @@
 supplyment/data/nerf_synthetic
 *.xml
 *.pyc
+.idea/
