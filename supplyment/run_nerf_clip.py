@@ -22,6 +22,7 @@ if torch.cuda.is_available():
     memory_gpus = [int(x.split()[2]) for x in open('gpu_info.txt', 'r').readlines()]
     gpu_ids = [int(np.argmax(memory_gpus))]
     torch.cuda.set_device(gpu_ids[0])
+    device = torch.device("cuda")
 else:
     device = torch.device("cpu")
 
