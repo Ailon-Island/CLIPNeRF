@@ -1,6 +1,8 @@
 import os
 import imageio
 import time
+
+import torch.cuda
 from tqdm import tqdm, trange
 
 from run_nerf_helpers import *
@@ -15,7 +17,15 @@ import clip
 import kornia
 
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+if torch.cuda.is_available()
+    os.system('nvidia-smi -q -d Memory |grep -A4 GPU|grep Free > gpu_info.txt')
+    memory_gpus = [int(x.split()[2]) for x in open('gpu_info.txt', 'r').readlines()]
+    gpu_ids = [int(np.argmax(memory_gpus))]
+    torch.cuda.set_device(gpu_ids[0])
+else:
+    device = torch.device("cpu")
+
+
 np.random.seed(0)
 DEBUG = False
 
