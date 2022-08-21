@@ -17,7 +17,7 @@ import clip
 import kornia
 
 
-if torch.cuda.is_available()
+if torch.cuda.is_available():
     os.system('nvidia-smi -q -d Memory |grep -A4 GPU|grep Free > gpu_info.txt')
     memory_gpus = [int(x.split()[2]) for x in open('gpu_info.txt', 'r').readlines()]
     gpu_ids = [int(np.argmax(memory_gpus))]
